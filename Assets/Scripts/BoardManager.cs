@@ -25,7 +25,9 @@ public class BoardManager : MonoBehaviour
     public List<GameObject> pooledBoneList = new List<GameObject>();
     public Vector3 exitPos = new Vector3();
 
-    private List<Vector3> gridPositions = new List<Vector3>();
+    public List<Vector3> gridPositions = new List<Vector3>();
+
+    public string levelColorCode;
 
     public int currentLevel;
     
@@ -55,7 +57,7 @@ public class BoardManager : MonoBehaviour
             }
         }
 
-        for (int i = -10; i < totalCol; i++)
+        /*for (int i = -10; i < totalCol; i++)                      fills emmpty cells around the gameboard with obstacles.
         {
             for (int j = -10; j < totalRow; j++)
             {
@@ -65,7 +67,7 @@ public class BoardManager : MonoBehaviour
                     Instantiate(obstacle, new Vector3(i, j, 0f), Quaternion.identity);
                 }
             }
-        }
+        }*/
     }
 
     public void putObjectsOnMap(GameObject objectToPut,List<Vector3> positionsToPut)
@@ -94,9 +96,13 @@ public class BoardManager : MonoBehaviour
         playerPos = levelManager.playerPos;
         obstaclepos = levelManager.obstaclepos;
         exitPos = levelManager.exitPos;
+        levelColorCode = levelManager.levelColorCode;
 
         DataScript.expectedBoneCount = levelManager.boneCount;
         DataScript.boneCount = 0;
+        DataScript.levelColorCode = levelColorCode;
+        
+
         pooledBoneList = ObjectPooler.instance.PooltheObjects(bone,rows * columns);
         putObjectsOnMap(dog, dogPos);
         putObjectsOnMap(bore, playerPos);

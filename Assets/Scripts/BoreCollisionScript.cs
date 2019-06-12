@@ -27,8 +27,7 @@ public class BoreCollisionScript : MonoBehaviour
         else if(collision.gameObject.tag == "Bone")
         {
             Debug.Log("Bone Collected");
-            StartCoroutine(boneEated());
-            collision.gameObject.SetActive(false);
+            StartCoroutine(boneEated(collision.gameObject));
         }
     }
 
@@ -41,14 +40,17 @@ public class BoreCollisionScript : MonoBehaviour
         }
     }
 
-    public IEnumerator boneEated()
+    public IEnumerator boneEated(GameObject bone)
     {
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSecondsRealtime(0.7f);
         GameObject go = Instantiate(boneParticleGameObj, transform.position, Quaternion.identity) as GameObject;
         boneParticleSystem = go.GetComponent<ParticleSystem>();
+        var main = boneParticleSystem.main;
+        main.startColor = DataScript.boneColor;
         boneParticleSystem.Play();
         DataScript.boneCount = DataScript.boneCount + 1;
         boneCounter.SetBoneCounter();
+        bone.gameObject.SetActive(false);
     }
 
    

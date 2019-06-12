@@ -10,6 +10,7 @@ public class CameraScript : MonoBehaviour
     void Start()
     {
         camera = Camera.main;
+        camera.backgroundColor = DataScript.backgroundColor;
     }
 
     public void setCameraPosition(int column, int row)

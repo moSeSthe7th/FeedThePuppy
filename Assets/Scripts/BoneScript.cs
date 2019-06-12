@@ -7,11 +7,18 @@ using UnityEngine;
 public class BoneScript : MonoBehaviour
 {
     public LayerMask layerMask;
-   
+    private SpriteRenderer spriteRenderer;
+
+    private void Start()
+    {
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer.color = DataScript.boneColor;
+    }
+
     private void OnEnable()
     {
-       
-        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;                   //make false here and then create raycasthit because wihjout this line bone sees itself and collides with itself
         RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, Vector2.zero, Mathf.Infinity,layerMask);
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
         //if it collides with nothing, the collider become null,

@@ -18,20 +18,23 @@ public class BadDogsCollisionScript : MonoBehaviour
     {
         if(collision.gameObject.tag == "Bone")
         {
-            collision.gameObject.SetActive(false);
-            StartCoroutine(boneEated());
+            
+            StartCoroutine(boneEated(collision.gameObject));
             
         }
     }
 
    
-    public IEnumerator boneEated()
+    public IEnumerator boneEated(GameObject bone)
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSecondsRealtime(1.2f);
         GameObject go = Instantiate(boneParticleGameObj, transform.position, Quaternion.identity) as GameObject;
         boneParticleSystem = go.GetComponent<ParticleSystem>();
+        var main = boneParticleSystem.main;
+        main.startColor = DataScript.boneColor;
         boneParticleSystem.Play();
         DataScript.boneCount = DataScript.boneCount + 1;
         boneCounter.SetBoneCounter();
+        bone.gameObject.SetActive(false);
     }
 }

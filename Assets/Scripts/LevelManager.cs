@@ -16,7 +16,8 @@ public class LevelManager : MonoBehaviour
 
     public Vector3 exitPos = new Vector3();
 
-    
+    public string levelColorCode;
+
     void Start()
     {
         boardManager = GetComponent<BoardManager>();
@@ -33,6 +34,9 @@ public class LevelManager : MonoBehaviour
 
                 playerPos.Add(new Vector3(0f, 0f, 0f));
                 exitPos = new Vector3(2f, 0f, 0f);
+
+                levelColorCode = "Red";
+
                 break;
             case 2:
                 columns = 3;
@@ -43,6 +47,9 @@ public class LevelManager : MonoBehaviour
                 obstaclepos.Add(new Vector3(2f, 2f, 0f));
                 obstaclepos.Add(new Vector3(1f, 1f, 0f));
                 exitPos = new Vector3(2f, 0f, 0f);
+
+                levelColorCode = "Red";
+
                 break;
             case 3:
                 columns = 3;
@@ -54,6 +61,9 @@ public class LevelManager : MonoBehaviour
                 obstaclepos.Add(new Vector3(2f, 2f, 0f));
                 obstaclepos.Add(new Vector3(0f, 2f, 0f));
                 exitPos = new Vector3(2f, 0f, 0f);
+
+                levelColorCode = "Red";
+
                 break;
             case 4:
                 columns = 3;
@@ -63,6 +73,8 @@ public class LevelManager : MonoBehaviour
                 playerPos.Add(new Vector3(1f, 1f, 0f));
                 dogPos.Add(new Vector3(1f, 0f, 0f));
                 exitPos = new Vector3(2f, 0f, 0f);
+
+                levelColorCode = "Red";
                 break;
             case 5:
                 columns = 3;
@@ -72,6 +84,9 @@ public class LevelManager : MonoBehaviour
                 playerPos.Add(new Vector3(0f, 2f, 0f));
                 dogPos.Add(new Vector3(0f, 1f, 0f));
                 exitPos = new Vector3(2f, 0f, 0f);
+
+                levelColorCode = "Red";
+
                 break;
             case 6:
                 columns = 3;
@@ -81,6 +96,9 @@ public class LevelManager : MonoBehaviour
                 playerPos.Add(new Vector3(2f, 2f, 0f));
                 dogPos.Add(new Vector3(1f, 1f, 0f));
                 exitPos = new Vector3(2f, 0f, 0f);
+
+                levelColorCode = "Red";
+
                 break;
         }
         

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7644126308109217614}
   - component: {fileID: 4908249181834706800}
   - component: {fileID: 8767570037276000539}
+  - component: {fileID: -5802544316979205211}
   - component: {fileID: 3328392402418043469}
   m_Layer: 10
   m_Name: Ground
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.24449539, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -94,8 +95,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 6dcf431c901ef774094e14b382c7fb20, type: 3}
-  - {fileID: 21300000, guid: 1872b95699e505e47b232a03cedf0e61, type: 3}
+  - {fileID: 21300000, guid: cc5bb032f24e5e54bb6617ecc207460c, type: 3}
+--- !u!114 &-5802544316979205211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8613652721834292996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a918e56f6b186774b87865a63a2d5f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &3328392402418043469
 BoxCollider2D:
   m_ObjectHideFlags: 0

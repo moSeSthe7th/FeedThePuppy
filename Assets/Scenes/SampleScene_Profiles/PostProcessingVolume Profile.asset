@@ -25,16 +25,16 @@ MonoBehaviour:
     defaultState: 1
   tonemapper:
     overrideState: 1
-    value: 3
+    value: 2
   toneCurveToeStrength:
     overrideState: 1
-    value: 0.217
+    value: 0.22
   toneCurveToeLength:
     overrideState: 1
-    value: 0.484
+    value: 1
   toneCurveShoulderStrength:
     overrideState: 1
-    value: 0.483
+    value: 1
   toneCurveShoulderLength:
     overrideState: 1
     value: 0.5
@@ -58,20 +58,20 @@ MonoBehaviour:
     overrideState: 1
     value: 0
   colorFilter:
-    overrideState: 1
+    overrideState: 0
     value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
     overrideState: 1
     value: 0
   saturation:
     overrideState: 1
-    value: 70
+    value: 100
   brightness:
     overrideState: 0
     value: 0
   postExposure:
     overrideState: 1
-    value: 0.86
+    value: 0.58
   contrast:
     overrideState: 1
     value: 100
@@ -103,13 +103,13 @@ MonoBehaviour:
     overrideState: 0
     value: 100
   lift:
-    overrideState: 1
+    overrideState: 0
     value: {x: 0.97130483, y: 1, z: 0.9911827, w: -0.37344402}
   gamma:
-    overrideState: 1
+    overrideState: 0
     value: {x: 1, y: 0.9663824, z: 0.97533435, w: 0.14522822}
   gain:
-    overrideState: 1
+    overrideState: 0
     value: {x: 0.984072, y: 0.9768637, z: 1, w: -0.18672195}
   masterCurve:
     overrideState: 0
@@ -898,7 +898,7 @@ MonoBehaviour:
       - 0.5
       - 0.5
   hueVsSatCurve:
-    overrideState: 1
+    overrideState: 0
     value:
       curve:
         serializedVersion: 2

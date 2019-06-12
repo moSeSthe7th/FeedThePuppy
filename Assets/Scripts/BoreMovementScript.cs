@@ -6,14 +6,14 @@ public class BoreMovementScript : MonoBehaviour
 {
 
     public LayerMask layerMask;
-    public bool canMove;
+    
 
     private Animator animator;
     
     
     void Start()
     {
-        canMove = true;
+        DataScript.canMove = true;              //sets canmove for both bore and baddog at the start of each level
         animator = gameObject.GetComponent<Animator>();
         animator.SetBool("isBoreEating", false);
     }
@@ -28,7 +28,7 @@ public class BoreMovementScript : MonoBehaviour
 
         //if it collides with nothing, the collider become null,
         //if we put a 2d collider in ground it collides with it or other objects
-        if (raycastDown.collider != null && raycastDown.collider.gameObject.tag == "Bone" && canMove)
+        if (raycastDown.collider != null && raycastDown.collider.gameObject.tag == "Bone" && DataScript.canMove)
         {
             
             StartCoroutine(moveToPositionSmoothly(gameObject, raycastDown.collider.gameObject));
@@ -36,7 +36,7 @@ public class BoreMovementScript : MonoBehaviour
             animator.SetBool("isBoreEating", true);
             
         }
-        else if(raycastUp.collider != null && raycastUp.collider.gameObject.tag == "Bone" && canMove)
+        else if(raycastUp.collider != null && raycastUp.collider.gameObject.tag == "Bone" && DataScript.canMove)
         {
             //canMove = false;
             StartCoroutine(moveToPositionSmoothly(gameObject, raycastUp.collider.gameObject));
@@ -44,7 +44,7 @@ public class BoreMovementScript : MonoBehaviour
             animator.SetBool("isBoreEating", true);
             
         }
-        else if (raycastRight.collider != null && raycastRight.collider.gameObject.tag == "Bone" && canMove)
+        else if (raycastRight.collider != null && raycastRight.collider.gameObject.tag == "Bone" && DataScript.canMove)
         {
            // canMove = false;
             StartCoroutine(moveToPositionSmoothly(gameObject, raycastRight.collider.gameObject));
@@ -52,7 +52,7 @@ public class BoreMovementScript : MonoBehaviour
             animator.SetBool("isBoreEating", true);
             
         }
-        else if (raycastLeft.collider != null && raycastLeft.collider.gameObject.tag == "Bone" && canMove)
+        else if (raycastLeft.collider != null && raycastLeft.collider.gameObject.tag == "Bone" && DataScript.canMove)
         {
             //canMove = false;
             StartCoroutine(moveToPositionSmoothly(gameObject, raycastLeft.collider.gameObject));
@@ -69,16 +69,18 @@ public class BoreMovementScript : MonoBehaviour
     public IEnumerator moveToPositionSmoothly(GameObject from, GameObject to)
     {
         Vector3 toGameobjectsPos = to.transform.position;
-        canMove = false;
+        DataScript.canMove = false;
         
 
         while (from.transform.position != toGameobjectsPos)
         {
             from.transform.position = Vector3.MoveTowards(from.transform.position, toGameobjectsPos, 10f * Time.deltaTime);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSecondsRealtime(0.1f);
         }
-        
-        canMove = true;
+
+        DataScript.canMove = true;
+
+        yield return new WaitForSecondsRealtime(0.3f);
         animator.SetBool("isBoreEating", false);
         
     }

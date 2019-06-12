@@ -24,11 +24,11 @@ public class ControllerManager : MonoBehaviour
         if(Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-            if(touch.phase == TouchPhase.Ended && !DataScript.isGamePaused)
+            roundedTouchPos = new Vector2(Mathf.Round(touch.position.x), Mathf.Round(touch.position.y));
+            if (touch.phase == TouchPhase.Ended && !DataScript.isGamePaused)
             {
-                roundedTouchPos = new Vector2(Mathf.Round(touch.position.x), Mathf.Round(touch.position.y));
                 bone = ObjectPooler.instance.GetPooledObject(boardManager.pooledBoneList);
-                if (bone != null)
+                if (bone != null && boardManager.gridPositions.Contains(roundedTouchPos))
                 {
                     putBone(bone, roundedTouchPos);
                 }
@@ -47,7 +47,7 @@ public class ControllerManager : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && !DataScript.isGamePaused)
         {
             bone = ObjectPooler.instance.GetPooledObject(boardManager.pooledBoneList);
-            if (bone != null)
+            if (bone != null && boardManager.gridPositions.Contains(roundedMousePos))
             {
                 putBone(bone, roundedMousePos);
             }

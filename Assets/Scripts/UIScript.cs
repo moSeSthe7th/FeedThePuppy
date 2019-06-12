@@ -14,6 +14,7 @@ public class UIScript : MonoBehaviour
     public Button pauseButton;
     public Button exitButton;
 
+    public Image backgroundPanelImage;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,8 @@ public class UIScript : MonoBehaviour
         levelPassedPanel.SetActive(false);
         exitButton.gameObject.SetActive(false);
         levelsPanel.SetActive(false);
+        backgroundPanelImage.color = DataScript.backgroundPanelImageColor;
+        backgroundPanelImage.gameObject.SetActive(false);
     }
     
     public void GameOverUI()
@@ -31,6 +34,7 @@ public class UIScript : MonoBehaviour
         gameOverPanel.SetActive(true);
         DataScript.isGamePaused = true;
         pauseButton.gameObject.SetActive(false);
+        backgroundPanelImage.gameObject.SetActive(true);
     }
 
     public void LevelPassedUI()
@@ -39,6 +43,7 @@ public class UIScript : MonoBehaviour
         levelPassedPanel.SetActive(true);
         DataScript.isGamePaused = true;
         pauseButton.gameObject.SetActive(false);
+        backgroundPanelImage.gameObject.SetActive(true);
     }
 
     public void PausedUI()
@@ -48,6 +53,7 @@ public class UIScript : MonoBehaviour
         pausePanel.SetActive(true);
         pauseButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(true);
+        backgroundPanelImage.gameObject.SetActive(true);
 
         DataScript.isGamePaused = true;
     }
@@ -60,6 +66,7 @@ public class UIScript : MonoBehaviour
         pauseButton.gameObject.SetActive(true);
         exitButton.gameObject.SetActive(false);
         levelsPanel.SetActive(false);
+        backgroundPanelImage.gameObject.SetActive(false);
 
         DataScript.isGamePaused = false;
     }
