@@ -6,13 +6,7 @@ public class BadDogsCollisionScript : MonoBehaviour
 {
     public GameObject boneParticleGameObj;
     private ParticleSystem boneParticleSystem;
-
-    private BoneCounter boneCounter;
-
-    private void Start()
-    {
-        boneCounter = FindObjectOfType(typeof(BoneCounter)) as BoneCounter;
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -33,8 +27,6 @@ public class BadDogsCollisionScript : MonoBehaviour
         var main = boneParticleSystem.main;
         main.startColor = DataScript.boneColor;
         boneParticleSystem.Play();
-        DataScript.boneCount = DataScript.boneCount + 1;
-        boneCounter.SetBoneCounter();
         bone.gameObject.SetActive(false);
     }
 }

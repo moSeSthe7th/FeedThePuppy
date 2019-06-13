@@ -21,14 +21,14 @@ public class LevelsColorSelector : MonoBehaviour
         switch (colorCode)
         {
             case "Red":
-                DataScript.backgroundColor = Color.white;
+                DataScript.backgroundColor = new Color(0.8392157f, 0.5333334f, 0.5333334f);
                 DataScript.boneColor = Color.cyan;
                 DataScript.groundColor = Color.red;
                 DataScript.backgroundPanelImageColor = new Color(1, 0.4009434f, 0.4009434f, 0.7568628f);
 
                 break;
             default:
-                DataScript.backgroundColor = Color.white;
+                DataScript.backgroundColor = new Color(0.8392157f, 0.5333334f, 0.5333334f);
                 DataScript.boneColor = Color.cyan;
                 DataScript.groundColor = Color.red;
                 DataScript.backgroundPanelImageColor = new Color(1, 0.4009434f, 0.4009434f, 0.7568628f);

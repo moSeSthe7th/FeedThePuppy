@@ -58,7 +58,7 @@ public class BadDogsMovement : MonoBehaviour
         while (from.transform.position != toGameobjectsPos)
         {
             from.transform.position = Vector3.MoveTowards(from.transform.position, toGameobjectsPos, 10f * Time.deltaTime);
-            yield return new WaitForSecondsRealtime(0.1f);
+            yield return new WaitForSecondsRealtime(0.04f);
         }
 
         DataScript.canMove = true;

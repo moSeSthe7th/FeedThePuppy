@@ -17,14 +17,14 @@ public class BoneCounter : MonoBehaviour
         SetBoneCounter();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public void SetBoneCounter()
     {
-        boneCounterText.text = DataScript.boneCount.ToString() + " / " + DataScript.expectedBoneCount.ToString() ;
+       
+    }
+
+    private void Update()
+    {
+        boneCounterText.text = DataScript.boneCount.ToString() + " / " + DataScript.expectedBoneCount.ToString();
     }
 }

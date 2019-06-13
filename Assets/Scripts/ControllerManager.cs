@@ -5,6 +5,7 @@ using UnityEngine;
 public class ControllerManager : MonoBehaviour
 {
     private BoardManager boardManager;
+    
 
     public GameObject bone;
 
@@ -16,6 +17,7 @@ public class ControllerManager : MonoBehaviour
     void Start()
     {
         boardManager = GetComponent<BoardManager>();
+        
     }
 
     
@@ -31,6 +33,7 @@ public class ControllerManager : MonoBehaviour
                 if (bone != null && boardManager.gridPositions.Contains(roundedTouchPos))
                 {
                     putBone(bone, roundedTouchPos);
+                    DataScript.boneCount++;
                 }
                 else
                 {
@@ -50,6 +53,7 @@ public class ControllerManager : MonoBehaviour
             if (bone != null && boardManager.gridPositions.Contains(roundedMousePos))
             {
                 putBone(bone, roundedMousePos);
+                DataScript.boneCount++;
             }
             else
             {

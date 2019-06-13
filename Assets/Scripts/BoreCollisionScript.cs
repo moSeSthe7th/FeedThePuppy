@@ -7,12 +7,10 @@ public class BoreCollisionScript : MonoBehaviour
 
     public GameObject boneParticleGameObj;
     private ParticleSystem boneParticleSystem;
-    private BoneCounter boneCounter;
     private GameHandler gameHandler;
 
     private void Start()
     {
-        boneCounter = FindObjectOfType(typeof(BoneCounter)) as BoneCounter;
         gameHandler = FindObjectOfType(typeof(GameHandler)) as GameHandler;
     }
 
@@ -48,8 +46,6 @@ public class BoreCollisionScript : MonoBehaviour
         var main = boneParticleSystem.main;
         main.startColor = DataScript.boneColor;
         boneParticleSystem.Play();
-        DataScript.boneCount = DataScript.boneCount + 1;
-        boneCounter.SetBoneCounter();
         bone.gameObject.SetActive(false);
     }
 

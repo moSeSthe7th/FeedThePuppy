@@ -8,6 +8,8 @@ public class BoneScript : MonoBehaviour
 {
     public LayerMask layerMask;
     private SpriteRenderer spriteRenderer;
+    
+
 
     private void Start()
     {
@@ -25,16 +27,19 @@ public class BoneScript : MonoBehaviour
         //if we put a 2d collider in ground it collides with it or other objects
         if (raycastHit.collider != null)
         {
+           
             if (raycastHit.collider.gameObject.tag != "Ground")
             {
+                DataScript.boneCount--;
                 gameObject.SetActive(false);
                 Debug.Log(raycastHit.collider.gameObject.tag);      // burada oyun içi bi uyarı verilebilir belki
             }
+           
             Debug.Log(raycastHit.collider.gameObject.tag);
-            
+           
         }
         
     }
-
+    
     
 }
