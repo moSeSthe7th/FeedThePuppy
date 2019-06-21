@@ -14,15 +14,8 @@ public class BoneCounter : MonoBehaviour
     {
         levelManager = FindObjectOfType(typeof(LevelManager)) as LevelManager;
         boneCounterText = GetComponent<Text>();
-        SetBoneCounter();
     }
-
     
-    public void SetBoneCounter()
-    {
-       
-    }
-
     private void Update()
     {
         boneCounterText.text = DataScript.boneCount.ToString() + " / " + DataScript.expectedBoneCount.ToString();

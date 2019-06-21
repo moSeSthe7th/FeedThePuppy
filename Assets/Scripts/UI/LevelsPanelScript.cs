@@ -8,7 +8,7 @@ public class LevelsPanelScript : MonoBehaviour
 
     public GameObject levelButtonObj;
 
-    // Start is called before the first frame update
+   
     void Start()
     {
         for (int i = 1; i <= DataScript.totalLevelCount; i++)

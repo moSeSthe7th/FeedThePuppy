@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class UIScript : MonoBehaviour
 {
-
+    private BonesParentScript bonesParentScript;
+   
+    
     public GameObject gameOverPanel;
     public GameObject pausePanel;
     public GameObject levelPassedPanel;
@@ -16,9 +18,13 @@ public class UIScript : MonoBehaviour
 
     public Image backgroundPanelImage;
 
+    public Text boneCounter;
+
     // Start is called before the first frame update
     void Start()
     {
+        bonesParentScript = FindObjectOfType(typeof(BonesParentScript)) as BonesParentScript;
+       
         gameOverPanel.SetActive(false);
         pausePanel.SetActive(false);
         levelPassedPanel.SetActive(false);
@@ -26,6 +32,8 @@ public class UIScript : MonoBehaviour
         levelsPanel.SetActive(false);
         backgroundPanelImage.color = DataScript.backgroundPanelImageColor;
         backgroundPanelImage.gameObject.SetActive(false);
+        
+        
     }
     
     public void GameOverUI()
@@ -39,11 +47,14 @@ public class UIScript : MonoBehaviour
 
     public void LevelPassedUI()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         levelPassedPanel.SetActive(true);
         DataScript.isGamePaused = true;
         pauseButton.gameObject.SetActive(false);
         backgroundPanelImage.gameObject.SetActive(true);
+        bonesParentScript.levelPassed();
+        boneCounter.gameObject.SetActive(false);
+
     }
 
     public void PausedUI()

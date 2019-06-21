@@ -41,7 +41,8 @@ public class BoreCollisionScript : MonoBehaviour
     public IEnumerator boneEated(GameObject bone)
     {
         yield return new WaitForSecondsRealtime(0.7f);
-        GameObject go = Instantiate(boneParticleGameObj, transform.position, Quaternion.identity) as GameObject;
+        Vector3 particleSystemPos = new Vector3(transform.position.x, transform.position.y - 0.25f, transform.position.z);
+        GameObject go = Instantiate(boneParticleGameObj, particleSystemPos, Quaternion.identity) as GameObject;
         boneParticleSystem = go.GetComponent<ParticleSystem>();
         var main = boneParticleSystem.main;
         main.startColor = DataScript.boneColor;

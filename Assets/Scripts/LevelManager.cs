@@ -74,7 +74,7 @@ public class LevelManager : MonoBehaviour
                 dogPos.Add(new Vector3(1f, 0f, 0f));
                 exitPos = new Vector3(2f, 0f, 0f);
 
-                levelColorCode = "Red";
+                levelColorCode = "Blue";
                 break;
             case 5:
                 columns = 3;
@@ -85,7 +85,7 @@ public class LevelManager : MonoBehaviour
                 dogPos.Add(new Vector3(0f, 1f, 0f));
                 exitPos = new Vector3(2f, 0f, 0f);
 
-                levelColorCode = "Red";
+                levelColorCode = "Blue";
 
                 break;
             case 6:
@@ -97,7 +97,7 @@ public class LevelManager : MonoBehaviour
                 dogPos.Add(new Vector3(1f, 1f, 0f));
                 exitPos = new Vector3(2f, 0f, 0f);
 
-                levelColorCode = "Red";
+                levelColorCode = "Blue";
 
                 break;
         }

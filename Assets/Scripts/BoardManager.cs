@@ -18,6 +18,7 @@ public class BoardManager : MonoBehaviour
     public GameObject obstacle;
     public GameObject bone;
     public GameObject exit;
+    
 
     public List<Vector3> dogPos = new List<Vector3>();
     public List<Vector3> playerPos = new List<Vector3>();
@@ -48,14 +49,21 @@ public class BoardManager : MonoBehaviour
     {
         gridPositions.Clear();
 
-        for (int x = 0; x < columns; x++)
-        {
-            for (int y = 0; y < rows; y++)
-            {
-                gridPositions.Add(new Vector3(x, y, 0f));
-                Instantiate(ground, new Vector3(x, y, 0f), Quaternion.identity);
-            }
-        }
+
+       
+
+         for (int x = columns-1; x > -1; x--)                         
+         {
+             for (int y = rows-1; y > -1; y--)
+             {
+                 gridPositions.Add(new Vector3(x, y, 0f));
+                 Instantiate(ground, new Vector3(x, y, 0f), Quaternion.identity);
+             }
+         }
+
+       
+
+
 
         /*for (int i = -10; i < totalCol; i++)                      fills emmpty cells around the gameboard with obstacles.
         {

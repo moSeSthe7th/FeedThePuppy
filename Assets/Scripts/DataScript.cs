@@ -20,12 +20,19 @@ public static class DataScript
 
     public static Color groundColor;
 
-    public static Color backgroundColor;
+    //public static Color backgroundColor;                    //deprecated use backgroundimagepath instead
+
+    public static string skyboxPath;
 
     public static Color backgroundPanelImageColor;
 
     public static string levelColorCode;
 
     public static bool canMove;                     // controls turn based system of bore(puppy) and bad dogs
-    
+
+    public static int[] starsForAllLevels;
+
+    public static int currentTotalStarCount;
+
+    public static int starsNeededToMoveNewHome;
 }

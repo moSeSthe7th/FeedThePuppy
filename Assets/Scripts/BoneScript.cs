@@ -34,12 +34,44 @@ public class BoneScript : MonoBehaviour
                 gameObject.SetActive(false);
                 Debug.Log(raycastHit.collider.gameObject.tag);      // burada oyun içi bi uyarı verilebilir belki
             }
-           
+            else
+            {
+                StartCoroutine(BoneThrowAnimation());
+            }
+
+            
             Debug.Log(raycastHit.collider.gameObject.tag);
            
         }
+
+        if (gameObject.activeSelf)
+        {
+            StartCoroutine(BoneThrowAnimation());
+        }
+        
         
     }
     
-    
+    IEnumerator BoneThrowAnimation()
+    {
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        Quaternion initialRotation = transform.rotation;
+        Vector3 initialScale = transform.localScale;
+
+        transform.localScale = new Vector3(3f, 3f, 3f);
+
+        for(float i = transform.localScale.x; i > initialScale.x; i-= 0.1f)
+        {
+            float randomFloatx = Random.Range(4f, 8f);
+            float randomFloaty = Random.Range(4f, 8f);
+            float randomFloatz = Random.Range(4f, 8f);
+            transform.localScale = new Vector3(i, i, 0f);
+            transform.Rotate(new Vector3(randomFloatx, randomFloaty, randomFloatz));
+            yield return new WaitForSecondsRealtime(0.013f);
+        }
+
+        transform.rotation = initialRotation;
+        transform.localScale = initialScale;
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
+    }
 }

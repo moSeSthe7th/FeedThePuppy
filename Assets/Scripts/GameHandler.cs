@@ -18,6 +18,18 @@ public class GameHandler : MonoBehaviour
         DataScript.maxLevel = PlayerPrefs.GetInt("Max Level", 1);
         DataScript.isGamePaused = false;
         DataScript.totalLevelCount = 6;
+        DataScript.starsForAllLevels = new int[DataScript.totalLevelCount];
+        DataScript.starsNeededToMoveNewHome = 40;           // bu hardcoded bunu bi şekilde değiştirebilirsin
+        DataScript.currentTotalStarCount = 0;
+
+        if (DataScript.starsForAllLevels != null)
+        {
+            for (int i = 0; i < DataScript.starsForAllLevels.Length; i++)
+            {
+                DataScript.currentTotalStarCount += DataScript.starsForAllLevels[i];
+            }
+        }
+
 
         Time.timeScale = 1;
 
@@ -29,16 +41,12 @@ public class GameHandler : MonoBehaviour
     {
        if(DataScript.currentLevel < DataScript.totalLevelCount)
         {
-            DataScript.currentLevel = DataScript.currentLevel + 1;
-
-            if (DataScript.currentLevel > DataScript.maxLevel)
+            if (DataScript.currentLevel == DataScript.maxLevel)
             {
-                DataScript.maxLevel = DataScript.currentLevel;
+                DataScript.maxLevel = DataScript.maxLevel + 1;
             }
-
-            PlayerPrefs.SetInt("Current Level", DataScript.currentLevel);
             PlayerPrefs.SetInt("Max Level", DataScript.maxLevel);
-
+            PlayerPrefs.SetInt("Current Level", DataScript.currentLevel + 1);
         }
 
         uIScript.LevelPassedUI();
