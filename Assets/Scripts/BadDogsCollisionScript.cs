@@ -10,12 +10,16 @@ public class BadDogsCollisionScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.tag == "Exit")
+        {
+            DataScript.isExitOccupied = true;
+        }
         if(collision.gameObject.tag == "Bone")
         {
-            
             StartCoroutine(boneEated(collision.gameObject));
             
         }
+
     }
 
    

@@ -35,4 +35,8 @@ public static class DataScript
     public static int currentTotalStarCount;
 
     public static int starsNeededToMoveNewHome;
+
+    public static int[] obstaclePaths;
+
+    public static bool isExitOccupied;
 }

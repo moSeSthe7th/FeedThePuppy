@@ -16,9 +16,10 @@ public class BoreCollisionScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Exit")
+        if (collision.gameObject.tag == "Exit" && !DataScript.isExitOccupied)
         {
             Debug.Log("EXIT");
+            StartCoroutine(reachedToExit());
             gameHandler.LevelPassed();
         }
         
@@ -48,6 +49,16 @@ public class BoreCollisionScript : MonoBehaviour
         main.startColor = DataScript.boneColor;
         boneParticleSystem.Play();
         bone.gameObject.SetActive(false);
+    }
+
+    public IEnumerator reachedToExit()
+    {
+        while(transform.localScale.x > 0f)
+        {
+            transform.localScale -= new Vector3(0.1f,0.1f,0.1f);
+            yield return new WaitForSeconds(0.07f);
+        }
+        
     }
 
    

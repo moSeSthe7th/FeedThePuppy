@@ -53,6 +53,9 @@ TagManager:
   - name: Gameboard
     uniqueID: 3430333913
     locked: 0
+  - name: Exit
+    uniqueID: 2546549957
+    locked: 0
   - name: Bone
     uniqueID: 384382007
     locked: 0
