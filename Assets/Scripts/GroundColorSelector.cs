@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GroundColorSelector : MonoBehaviour
 {
-
     private SpriteRenderer spriteRenderer;
     
     void Start()

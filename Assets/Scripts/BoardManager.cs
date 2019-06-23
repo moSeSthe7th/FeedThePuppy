@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ContentSizeMapping;
 
 public class BoardManager : MonoBehaviour
 {
     private LevelManager levelManager;
     private CameraScript cameraScript;
+    private ObjectSizeHandler objectSizeHandler;
+
+    Transform Board; // BoardManager tarafından tüm objeler u objenin child i. Size ayarlamalar bu ojenin üstünden yapılıyor
 
     public int columns;
     public int rows;
@@ -36,10 +40,12 @@ public class BoardManager : MonoBehaviour
     {
         cameraScript = FindObjectOfType(typeof(CameraScript)) as CameraScript;
         levelManager = GetComponent<LevelManager>();
+        objectSizeHandler = new ObjectSizeHandler();
 
         totalCol = 10;
         totalRow = 10;
 
+        BoardCreator();
         LevelCreator(currentLevel);
     }
 
@@ -49,21 +55,15 @@ public class BoardManager : MonoBehaviour
     {
         gridPositions.Clear();
 
-
-       
-
-         for (int x = columns-1; x > -1; x--)                         
-         {
-             for (int y = rows-1; y > -1; y--)
-             {
-                 gridPositions.Add(new Vector3(x, y, 0f));
-                 Instantiate(ground, new Vector3(x, y, 0f), Quaternion.identity);
-             }
-         }
-
-       
-
-
+        for (int x = columns - 1; x > -1; x--)
+        {
+            for (int y = rows - 1; y > -1; y--)
+            {
+                gridPositions.Add(new Vector3(x, y, 0f));
+                Debug.Log("GridIndex is " + gridPositions.Count + ". GridPos is : " + gridPositions[gridPositions.Count - 1]);
+                Instantiate(ground, gridPositions[gridPositions.Count - 1], Quaternion.identity, Board);
+            }
+        }
 
         /*for (int i = -10; i < totalCol; i++)                      fills emmpty cells around the gameboard with obstacles.
         {
@@ -84,15 +84,20 @@ public class BoardManager : MonoBehaviour
         {
             for (int i = 0; i < positionsToPut.Count; i++)
             {
-                Instantiate(objectToPut, positionsToPut[i], Quaternion.identity);
+                Instantiate(objectToPut, positionsToPut[i], Quaternion.identity,Board);
             }
         }
         
     }
 
-    
-    
-    public void LevelCreator(int level)
+
+    //Just creates the empty board object
+    void BoardCreator()
+    {
+        Board = new GameObject("Board").transform;
+    }
+
+    void LevelCreator(int level)
     {
         Debug.Log("Level = " + level);
         levelManager.LevelData(level);
@@ -111,12 +116,14 @@ public class BoardManager : MonoBehaviour
         DataScript.levelColorCode = levelColorCode;
         
 
-        pooledBoneList = ObjectPooler.instance.PooltheObjects(bone,rows * columns);
+        pooledBoneList = ObjectPooler.instance.PooltheObjects(bone,rows * columns, Board);
         putObjectsOnMap(dog, dogPos);
         putObjectsOnMap(bore, playerPos);
         putObjectsOnMap(obstacle, obstaclepos);
-        Instantiate(exit, exitPos, Quaternion.identity);
+        Instantiate(exit, exitPos, Quaternion.identity, Board);
         InitializeList();
+
+        objectSizeHandler.ArrangeObjectSize(Board);
 
         cameraScript.setCameraPosition(columns,rows);
     }
