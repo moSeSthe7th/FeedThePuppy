@@ -29,6 +29,7 @@ public class ControllerManager : MonoBehaviour
             roundedTouchPos = new Vector2(Mathf.Round(touch.position.x), Mathf.Round(touch.position.y));
             if (touch.phase == TouchPhase.Ended && !DataScript.isGamePaused)
             {
+                
                 bone = ObjectPooler.instance.GetPooledObject(boardManager.pooledBoneList);
                 if (bone != null && boardManager.gridPositions.Contains(roundedTouchPos))
                 {
@@ -49,6 +50,7 @@ public class ControllerManager : MonoBehaviour
         roundedMousePos = new Vector2(Mathf.Round(mousePos.x), Mathf.Round(mousePos.y));
         if (Input.GetMouseButtonUp(0) && !DataScript.isGamePaused)
         {
+            
             bone = ObjectPooler.instance.GetPooledObject(boardManager.pooledBoneList);
             if (bone != null && boardManager.gridPositions.Contains(roundedMousePos))
             {
