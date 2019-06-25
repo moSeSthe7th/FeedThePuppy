@@ -11,18 +11,90 @@ namespace ContentSizeMapping
         //Arrange platform width convert screen width to world size in x
         public float gameScreenHeight = Camera.main.orthographicSize * 2.0f;
         public float gameScreenWidth = (Camera.main.orthographicSize * 2.0f) * Camera.main.aspect; //gameScreenHeight
+        public float defatultGameWidth = 3.5f; //iphone x game width
+
+        protected Vector2 defaultScreenSize = new Vector2(1125f,2436f); //iphone x screen width and screen height
+        protected Vector2 ScreenSize = new Vector2(Screen.width, Screen.height);
     }
 
+    enum ObjectPlace
+    {
+        pMiddle,
+
+    }
+
+   public enum Object
+    {
+        Board,
+        Default
+    }
 
     public class ObjectSizeHandler : SizeHandler
     {
-        public void ArrangeObjectSize(Transform objectToArrange )
+        public void ArrangeObjectSize(Transform objectToArrange,Object size = Object.Default, float cSize = 1) 
         {
-                       
-            objectToArrange.transform.localScale = new Vector3(gameScreenWidth / 4f,gameScreenWidth / 4f);
-            Vector2 diff = Vector2.one - (Vector2)objectToArrange.transform.localScale;
-            objectToArrange.transform.position = diff;//new Vector3(-GetWallPosition() / 4f, -GetGroundPosition() / 4f , 0f);
+            Vector2 oldSize = (Vector2)objectToArrange.transform.localScale;
+            Vector2 newSize = Vector2.one;
 
+            Debug.Log("GameScreenWidth is : " + gameScreenWidth + ". Game screen heigth is  : " + gameScreenHeight);
+            Debug.Log("Size before changing : " + oldSize);
+            Debug.Log(defaultScreenSize + " and current  " + ScreenSize);         
+
+            switch(size)
+            {
+
+                case Object.Board:
+
+                    float defaultColumnSize = 3f;
+
+                    float columnDiff = defaultColumnSize / cSize;
+                    float boardSize = oldSize.x * columnDiff;
+
+                    boardSize = ChangeSizeLinearly(boardSize);
+
+                    newSize = new Vector2(boardSize, boardSize);
+
+                    objectToArrange.transform.localScale = newSize;
+
+                    float posColumnDiff = 1f;
+                    if(!Mathf.Approximately(defaultColumnSize,cSize))
+                    {
+                        posColumnDiff =  cSize / defaultColumnSize;
+                    }
+                    Vector3 middlePos = Camera.main.ScreenToWorldPoint(new Vector3(.5f, .5f, 0f));
+                    objectToArrange.transform.position = middlePos;// posColumnDiff * (Vector3)PosDiffAccordingToChangedSize(oldSize, newSize);
+
+                    break;
+                case Object.Default:
+                default:
+
+                    float tmpSize = ChangeSizeLinearly(oldSize.x);
+
+                    newSize = new Vector2(tmpSize, tmpSize);
+                    objectToArrange.transform.position += (Vector3)PosDiffAccordingToChangedSize(oldSize, newSize); 
+                    objectToArrange.transform.localScale = newSize;
+
+                    break;
+                
+
+            }
+
+           
+           // Vector2 diff = Vector2.one - (Vector2)objectToArrange.transform.localScale;
+           // objectToArrange.transform.position = diff;//new Vector3(-GetWallPosition() / 4f, -GetGroundPosition() / 4f , 0f);
+
+        }
+
+        float ChangeSizeLinearly(float oldSize)
+        {
+            float size = (gameScreenWidth * oldSize) / defatultGameWidth; //doğrusal orantıyla artıyor size
+            return size;
+        }
+
+        Vector2 PosDiffAccordingToChangedSize(Vector2 oldSize, Vector2 newSize)
+        {
+            Vector2 diff = new Vector2((oldSize.x - newSize.x), (oldSize.y - newSize.y));
+            return diff;
         }
 
         public float GetWallPosition()

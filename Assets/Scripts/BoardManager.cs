@@ -12,7 +12,7 @@ public class BoardManager : MonoBehaviour
     Transform Board; // BoardManager tarafından tüm objeler u objenin child i. Size ayarlamalar bu ojenin üstünden yapılıyor
 
     public int columns;
-    public int rows;
+    public int  rows;
     public int totalCol;
     public int totalRow;
 
@@ -119,9 +119,9 @@ public class BoardManager : MonoBehaviour
         Instantiate(exit, exitPos, Quaternion.identity, Board);
         InitializeList();
 
-        objectSizeHandler.ArrangeObjectSize(Board);
+        objectSizeHandler.ArrangeObjectSize(Board, ContentSizeMapping.Object.Board, columns);
 
-        cameraScript.setCameraPosition(columns,rows);
+        //cameraScript.setCameraPosition(columns,rows);
     }
 
 }
