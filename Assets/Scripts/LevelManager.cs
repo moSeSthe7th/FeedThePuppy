@@ -101,6 +101,23 @@ public class LevelManager : MonoBehaviour
 
                 break;
             case 7:
+                columns = 4;
+                rows = 4;
+                boneCount = 7;
+
+                playerPos.Add(new Vector3(1f, 3f, 0f));
+
+                dogPos.Add(new Vector3(2f, 1f, 0f));
+
+                obstaclepos.Add(new Vector3(0f, 1f, 0f));
+                obstaclepos.Add(new Vector3(3f, 1f, 0f));
+
+                exitPos = new Vector3(3f, 0f, 0f);
+
+                levelColorCode = "Blue";
+
+                break;
+            case 8:
                 columns = 6;
                 rows = 6;
                 boneCount = 8;
@@ -124,7 +141,7 @@ public class LevelManager : MonoBehaviour
                 levelColorCode = "Blue";
 
                 break;
-            case 8:
+            case 9:
                 columns = 5;
                 rows = 4;
                 boneCount = 10;

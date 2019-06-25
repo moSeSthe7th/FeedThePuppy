@@ -17,7 +17,7 @@ public class GameHandler : MonoBehaviour
         DataScript.currentLevel = PlayerPrefs.GetInt("Current Level", 1);
         DataScript.maxLevel = PlayerPrefs.GetInt("Max Level", 1);
         DataScript.isGamePaused = false;
-        DataScript.totalLevelCount = 8;
+        DataScript.totalLevelCount = 9;
         DataScript.starsForAllLevels = new int[DataScript.totalLevelCount];
         DataScript.starsNeededToMoveNewHome = 40;           // bu hardcoded bunu bi şekilde değiştirebilirsin
         DataScript.currentTotalStarCount = 0;
