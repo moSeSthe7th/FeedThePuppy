@@ -100,6 +100,52 @@ public class LevelManager : MonoBehaviour
                 levelColorCode = "Blue";
 
                 break;
+            case 7:
+                columns = 6;
+                rows = 6;
+                boneCount = 8;
+
+                playerPos.Add(new Vector3(1f, 4f, 0f));
+
+                dogPos.Add(new Vector3(0f, 3f, 0f));
+                dogPos.Add(new Vector3(4f, 3f, 0f));
+
+                obstaclepos.Add(new Vector3(1f, 1f, 0f));
+                obstaclepos.Add(new Vector3(1f, 3f, 0f));
+                obstaclepos.Add(new Vector3(2f, 3f, 0f));
+                obstaclepos.Add(new Vector3(3f, 3f, 0f));
+                obstaclepos.Add(new Vector3(3f, 2f, 0f));
+                obstaclepos.Add(new Vector3(3f, 1f, 0f));
+                obstaclepos.Add(new Vector3(0f, 5f, 0f));
+                obstaclepos.Add(new Vector3(5f, 5f, 0f));
+
+                exitPos = new Vector3(2f, 2f, 0f);
+
+                levelColorCode = "Blue";
+
+                break;
+            case 8:
+                columns = 5;
+                rows = 4;
+                boneCount = 10;
+
+                playerPos.Add(new Vector3(0f, 3f, 0f));
+
+                dogPos.Add(new Vector3(0f, 1f, 0f));
+                dogPos.Add(new Vector3(1f, 2f, 0f));
+                dogPos.Add(new Vector3(4f, 2f, 0f));
+
+                obstaclepos.Add(new Vector3(2f, 0f, 0f));
+                obstaclepos.Add(new Vector3(1f, 3f, 0f));
+                obstaclepos.Add(new Vector3(2f, 3f, 0f));
+                obstaclepos.Add(new Vector3(3f, 3f, 0f));
+                obstaclepos.Add(new Vector3(4f, 3f, 0f));
+
+                exitPos = new Vector3(2f, 1f, 0f);
+
+                levelColorCode = "Red";
+                
+                break;
         }
         
 

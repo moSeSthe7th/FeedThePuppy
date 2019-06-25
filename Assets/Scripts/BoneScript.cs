@@ -70,9 +70,7 @@ public class BoneScript : MonoBehaviour
 
         for(float i = transform.localScale.x; i > initialScale.x; i-= 0.2f)
         {
-            float randomFloatx = Random.Range(2f,3f);
-            float randomFloaty = Random.Range(2f, 3f);
-            float randomFloatz = Random.Range(2f, 3f);
+            
             transform.localScale = new Vector3(i, i, 0f);
             transform.Rotate(new Vector3(1.5f, 1.5f, 1.5f));
             yield return new WaitForSecondsRealtime(0.005f);

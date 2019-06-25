@@ -18,7 +18,13 @@ public class LevelSelectorGameObject : MonoBehaviour
         //levelSelectorButton = GetComponentInChildren<Button>();
         levelSelectorButtonText = GetComponentInChildren<Text>() ;        
         int.TryParse(levelSelectorButtonText.text, out levelAtButton);
-        levelSelectorBonesParent.createLevelStars(DataScript.starsForAllLevels[levelAtButton - 1]);
+        if(levelAtButton <= DataScript.maxLevel)
+        {
+            //Debug.Log("starsforalllevelslength" + DataScript.starsForAllLevels.Length);
+            //Debug.Log("levelatbutton" + DataScript.starsForAllLevels.Length);
+            levelSelectorBonesParent.createLevelStars(DataScript.starsForAllLevels[levelAtButton - 1]);
+        }
+        
     }
 
 

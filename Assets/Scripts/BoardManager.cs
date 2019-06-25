@@ -42,9 +42,6 @@ public class BoardManager : MonoBehaviour
         levelManager = GetComponent<LevelManager>();
         objectSizeHandler = new ObjectSizeHandler();
 
-        totalCol = 10;
-        totalRow = 10;
-
         BoardCreator();
         LevelCreator(currentLevel);
     }
@@ -60,7 +57,6 @@ public class BoardManager : MonoBehaviour
             for (int y = rows - 1; y > -1; y--)
             {
                 gridPositions.Add(new Vector3(x, y, 0f));
-                Debug.Log("GridIndex is " + gridPositions.Count + ". GridPos is : " + gridPositions[gridPositions.Count - 1]);
                 Instantiate(ground, gridPositions[gridPositions.Count - 1], Quaternion.identity, Board);
             }
         }

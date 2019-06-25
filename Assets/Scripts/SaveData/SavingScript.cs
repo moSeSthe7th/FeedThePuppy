@@ -11,7 +11,7 @@ public class SavingScript : MonoBehaviour
     {
         savePath = Application.persistentDataPath + "/save.cm";
         loadStarsForAllLevels();
-        Debug.Log(DataScript.starsForAllLevels[5]);
+        
     }
 
     
@@ -41,7 +41,11 @@ public class SavingScript : MonoBehaviour
             save = binaryFormatter.Deserialize(fileStream) as Save;
             fileStream.Close();
 
-            DataScript.starsForAllLevels = save.starsForAllLevels;
+            for(int i = 0; i<save.starsForAllLevels.Length; i++)
+            {
+                DataScript.starsForAllLevels[i] = save.starsForAllLevels[i];
+            }
+            
 
             Debug.Log("Star data loaded");
         }

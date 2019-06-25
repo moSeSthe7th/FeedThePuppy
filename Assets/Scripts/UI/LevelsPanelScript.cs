@@ -18,7 +18,7 @@ public class LevelsPanelScript : MonoBehaviour
             obj.transform.SetParent(transform);
             if(i > DataScript.maxLevel)
             {
-                obj.gameObject.GetComponent<Button>().interactable = false;
+                obj.gameObject.GetComponentInChildren<Button>().interactable = false;
             }
         }
     }
