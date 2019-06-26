@@ -119,7 +119,7 @@ public class BoardManager : MonoBehaviour
         Instantiate(exit, exitPos, Quaternion.identity, Board);
         InitializeList();
 
-        objectSizeHandler.ArrangeObjectSize(Board, ContentSizeMapping.Object.Board, columns);
+        objectSizeHandler.ArrangeObjectSize(Board, ContentSizeMapping.Object.Board, (float)columns);
 
         //cameraScript.setCameraPosition(columns,rows);
     }

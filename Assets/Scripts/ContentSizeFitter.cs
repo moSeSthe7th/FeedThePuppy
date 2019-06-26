@@ -31,7 +31,7 @@ namespace ContentSizeMapping
 
     public class ObjectSizeHandler : SizeHandler
     {
-        public void ArrangeObjectSize(Transform objectToArrange,Object size = Object.Default, float cSize = 1) 
+        public void ArrangeObjectSize(Transform objectToArrange,Object size = Object.Default, float cSize = 1f) 
         {
             Vector2 oldSize = (Vector2)objectToArrange.transform.localScale;
             Vector2 newSize = Vector2.one;
@@ -59,11 +59,10 @@ namespace ContentSizeMapping
                     float posColumnDiff = 1f;
                     if(!Mathf.Approximately(defaultColumnSize,cSize))
                     {
-                        posColumnDiff =  cSize / defaultColumnSize;
+                        posColumnDiff =  (cSize / defaultColumnSize) - (oldSize.x - newSize.x);
                     }
-                    Vector3 middlePos = Camera.main.ScreenToWorldPoint(new Vector3(.5f, .5f, 0f));
-                    objectToArrange.transform.position = middlePos;// posColumnDiff * (Vector3)PosDiffAccordingToChangedSize(oldSize, newSize);
-
+                    Vector3 middlePos = Camera.main.ScreenToWorldPoint((Vector3)(ScreenSize) / 2f);
+                    objectToArrange.transform.position = new Vector3( middlePos.x - posColumnDiff ,middlePos.y - posColumnDiff, 0f);
                     break;
                 case Object.Default:
                 default:
