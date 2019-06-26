@@ -121,7 +121,7 @@ public class BoardManager : MonoBehaviour
 
         objectSizeHandler.ArrangeObjectSize(Board, ContentSizeMapping.Object.Board, (float)columns);
 
-        //cameraScript.setCameraPosition(columns,rows);
+        cameraScript.setCameraPosition(columns,rows);
     }
 
 }

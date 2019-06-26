@@ -56,13 +56,19 @@ namespace ContentSizeMapping
 
                     objectToArrange.transform.localScale = newSize;
 
-                    float posColumnDiff = 1f;
-                    if(!Mathf.Approximately(defaultColumnSize,cSize))
+                    float posColumnDiff = 0f;
+                    if(!Mathf.Approximately(defaultColumnSize,cSize)) // eğer column sayısı 3 den farklıysa
                     {
-                        posColumnDiff =  (cSize / defaultColumnSize) - (oldSize.x - newSize.x);
+                        posColumnDiff = (cSize / defaultColumnSize) - (oldSize.x - newSize.x) - (cSize / 2f);
+
+                        Vector3 middlePos = Camera.main.ScreenToWorldPoint((Vector3)(ScreenSize) / 2f);
+                        objectToArrange.transform.position = new Vector3(middlePos.x - posColumnDiff, middlePos.y - posColumnDiff, 0f);
                     }
-                    Vector3 middlePos = Camera.main.ScreenToWorldPoint((Vector3)(ScreenSize) / 2f);
-                    objectToArrange.transform.position = new Vector3( middlePos.x - posColumnDiff ,middlePos.y - posColumnDiff, 0f);
+                    else
+                    {
+                        objectToArrange.transform.position += (Vector3)PosDiffAccordingToChangedSize(oldSize, newSize);
+                    }
+
                     break;
                 case Object.Default:
                 default:
