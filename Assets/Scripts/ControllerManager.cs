@@ -67,7 +67,7 @@ public class ControllerManager : MonoBehaviour
 
     public void putBone(GameObject bone ,Vector2 bonePos)
     {
-        bone.transform.position = bonePos;
+        bone.transform.localPosition = bonePos;
         bone.gameObject.SetActive(true);
     }
 }

@@ -91,6 +91,8 @@ public class BoardManager : MonoBehaviour
     void BoardCreator()
     {
         Board = new GameObject("Board").transform;
+        Board.transform.position = new Vector3(0f, 0f, 0f);
+        Board.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     void LevelCreator(int level)
