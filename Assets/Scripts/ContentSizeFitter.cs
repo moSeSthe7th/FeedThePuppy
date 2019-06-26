@@ -23,40 +23,40 @@ namespace ContentSizeMapping
 
     }
 
-   public enum Object
+   public enum ObjectType
     {
         Board,
+        Camera,
         Default
     }
 
     public class ObjectSizeHandler : SizeHandler
     {
-        public void ArrangeObjectSize(Transform objectToArrange,Object size = Object.Default, float cSize = 1f) 
+        public Vector3 ArrangeObjectSize(ObjectType objectType, Vector3 currentSizeOfObject, float cSize = 1f) 
         {
-            Vector2 oldSize = (Vector2)objectToArrange.transform.localScale;
-            Vector2 newSize = Vector2.one;
+            Vector3 oldSize = currentSizeOfObject;
+            Vector3 newSize = Vector2.one;
+            float defaultColumnSize = 3f;
 
-            Debug.Log("GameScreenWidth is : " + gameScreenWidth + ". Game screen heigth is  : " + gameScreenHeight);
+            Debug.Log("GameScreenWidth is : " + gameScreenWidth);
             Debug.Log("Size before changing : " + oldSize);
-            Debug.Log(defaultScreenSize + " and current  " + ScreenSize);         
 
-            switch(size)
+            switch(objectType)
             {
 
-                case Object.Board:
-
-                    float defaultColumnSize = 3f;
+                case ObjectType.Board:
 
                     float columnDiff = defaultColumnSize / cSize;
                     float boardSize = oldSize.x * columnDiff;
 
-                    boardSize = ChangeSizeLinearly(boardSize);
+                    boardSize = IncreaseSizeLinearly(boardSize);
 
-                    newSize = new Vector2(boardSize, boardSize);
+                    newSize = new Vector3(boardSize, boardSize);
 
-                    objectToArrange.transform.localScale = newSize;
 
-                    float posColumnDiff = 0f;
+
+                    //For changing position according to changed scale
+                 /*   float posColumnDiff = 0f;
                     if(!Mathf.Approximately(defaultColumnSize,cSize)) // eğer column sayısı 3 den farklıysa
                     {
                         posColumnDiff = (cSize / defaultColumnSize) - (oldSize.x - newSize.x) - (cSize / 2f);
@@ -67,30 +67,51 @@ namespace ContentSizeMapping
                     else
                     {
                         objectToArrange.transform.position += (Vector3)PosDiffAccordingToChangedSize(oldSize, newSize);
-                    }
+                    }*/
 
                     break;
-                case Object.Default:
+
+                case ObjectType.Camera:
+
+                    float cDiff = defaultColumnSize / cSize;
+                    float newCamSize = oldSize.x / cDiff;
+
+                    newCamSize = DecreaseSizeLinearly(newCamSize);
+
+                    newSize = new Vector3(newCamSize, newCamSize);
+
+
+                    break;
+                case ObjectType.Default:
                 default:
 
-                    float tmpSize = ChangeSizeLinearly(oldSize.x);
+                    float tmpSize = IncreaseSizeLinearly(oldSize.x);
 
                     newSize = new Vector2(tmpSize, tmpSize);
-                    objectToArrange.transform.position += (Vector3)PosDiffAccordingToChangedSize(oldSize, newSize); 
-                    objectToArrange.transform.localScale = newSize;
+                    // objectToArrange.transform.position += (Vector3)PosDiffAccordingToChangedSize(oldSize, newSize); 
+
+                              
 
                     break;
                 
 
             }
 
-           
+            Debug.Log("Size after changing : " + newSize);
+
+            return newSize;
            // Vector2 diff = Vector2.one - (Vector2)objectToArrange.transform.localScale;
            // objectToArrange.transform.position = diff;//new Vector3(-GetWallPosition() / 4f, -GetGroundPosition() / 4f , 0f);
 
         }
 
-        float ChangeSizeLinearly(float oldSize)
+        float DecreaseSizeLinearly(float oldSize)
+        {
+            float size = (defatultGameWidth * oldSize) / gameScreenWidth;
+            return size;
+        }
+
+        float IncreaseSizeLinearly(float oldSize)
         {
             float size = (gameScreenWidth * oldSize) / defatultGameWidth; //doğrusal orantıyla artıyor size
             return size;

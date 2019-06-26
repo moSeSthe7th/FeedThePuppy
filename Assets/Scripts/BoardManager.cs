@@ -99,7 +99,6 @@ public class BoardManager : MonoBehaviour
     {
         Debug.Log("Level = " + level);
         levelManager.LevelData(level);
-
         
         columns = levelManager.columns;
         rows = levelManager.rows;
@@ -121,9 +120,9 @@ public class BoardManager : MonoBehaviour
         Instantiate(exit, exitPos, Quaternion.identity, Board);
         InitializeList();
 
-        objectSizeHandler.ArrangeObjectSize(Board, ContentSizeMapping.Object.Board, (float)columns);
-
-        cameraScript.setCameraPosition(columns,rows);
+        //Board.localScale = objectSizeHandler.ArrangeObjectSize(ContentSizeMapping.ObjectType.Board,Board.localScale, (float)columns);
+        Vector3 cameraSize = objectSizeHandler.ArrangeObjectSize(ObjectType.Camera, cameraScript.camSizeMapper, (float)columns);
+        cameraScript.SetCamera(columns,rows,cameraSize.x);
     }
 
 }
