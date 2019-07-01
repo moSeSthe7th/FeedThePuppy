@@ -4,36 +4,56 @@ using UnityEngine;
 
 public class MergerScript : MonoBehaviour
 {
-    public bool isMergeAvailable;           // bu true olmuyor bi daha
+    
     public GameObject badDog;
 
     private GameObject board;
 
+    public GameObject mergeParticleSystemObj;
+    private ParticleSystem mergeParticleSystem;
+
     private void Start()
     {
-        isMergeAvailable = true;
-        
+        DataScript.isMergeAvailable = true;
     }
 
     
 
-    public IEnumerator MergeObjects(GameObject gameObject, Vector3 position)
+    public IEnumerator MergeObjects(GameObject gameObject, Vector3 mergePosition)
     {
-        board = GameObject.FindWithTag("Board");
+        DataScript.canMove = true;
 
-        yield return new WaitForSecondsRealtime(0.2f);
-
-        
-
-        if (isMergeAvailable)
+        if (DataScript.isMergeAvailable)
         {
-            gameObject.SetActive(false);
-            //GameObject go = Instantiate(badDog, position, Quaternion.identity,board.transform);
-        }
+            board = GameObject.FindWithTag("Board");
 
-        isMergeAvailable = true;
+            GameObject mergerParticleObj = Instantiate(mergeParticleSystemObj, mergePosition, Quaternion.identity) as GameObject;
+            mergeParticleSystem = mergerParticleObj.GetComponent<ParticleSystem>();
+            mergeParticleSystem.Play();
+
+            
+            GameObject go = Instantiate(badDog, mergePosition, Quaternion.identity, board.transform);
+        }
+        yield return new WaitForSecondsRealtime(0.2f);
+    }
+
+   /* public void MergeObjects(GameObject mergedObject, Vector3 mergePosition)
+    {
         DataScript.canMove = true;
         
-        
-    }
+        if (DataScript.isMergeAvailable)
+        {
+            
+            board = GameObject.FindWithTag("Board");
+
+            GameObject mergerParticleObj = Instantiate(mergeParticleSystemObj, mergePosition, Quaternion.identity) as GameObject;
+            mergeParticleSystem = mergerParticleObj.GetComponent<ParticleSystem>();
+            mergeParticleSystem.Play();
+
+            GameObject go = Instantiate(badDog, mergePosition, Quaternion.identity, board.transform);
+        }
+      
+    }*/
+
+
 }

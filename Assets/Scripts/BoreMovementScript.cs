@@ -30,7 +30,7 @@ public class BoreMovementScript : MonoBehaviour
         //if we put a 2d collider in ground it collides with it or other objects
         if (raycastDown.collider != null && raycastDown.collider.gameObject.tag == "Bone" && DataScript.canMove)
         {
-            
+            DataScript.canMove = false;
             StartCoroutine(moveToPositionSmoothly(gameObject, raycastDown.collider.gameObject));
             
             animator.SetBool("isBoreEating", true);
@@ -39,6 +39,7 @@ public class BoreMovementScript : MonoBehaviour
         else if(raycastUp.collider != null && raycastUp.collider.gameObject.tag == "Bone" && DataScript.canMove)
         {
             //canMove = false;
+            DataScript.canMove = false;
             StartCoroutine(moveToPositionSmoothly(gameObject, raycastUp.collider.gameObject));
             
             animator.SetBool("isBoreEating", true);
@@ -46,7 +47,8 @@ public class BoreMovementScript : MonoBehaviour
         }
         else if (raycastRight.collider != null && raycastRight.collider.gameObject.tag == "Bone" && DataScript.canMove)
         {
-           // canMove = false;
+            // canMove = false;
+            DataScript.canMove = false;
             StartCoroutine(moveToPositionSmoothly(gameObject, raycastRight.collider.gameObject));
             
             animator.SetBool("isBoreEating", true);
@@ -55,6 +57,7 @@ public class BoreMovementScript : MonoBehaviour
         else if (raycastLeft.collider != null && raycastLeft.collider.gameObject.tag == "Bone" && DataScript.canMove)
         {
             //canMove = false;
+            DataScript.canMove = false;
             StartCoroutine(moveToPositionSmoothly(gameObject, raycastLeft.collider.gameObject));
             
             animator.SetBool("isBoreEating", true);
@@ -69,17 +72,15 @@ public class BoreMovementScript : MonoBehaviour
     public IEnumerator moveToPositionSmoothly(GameObject from, GameObject to)
     {
         Vector3 toGameobjectsPos = to.transform.position;
-        DataScript.canMove = false;
         
-
         while (from.transform.position != toGameobjectsPos)
         {
             from.transform.position = Vector3.MoveTowards(from.transform.position, toGameobjectsPos, 10f * Time.deltaTime);
             yield return new WaitForSecondsRealtime(0.04f);
+            
         }
-
+        
         DataScript.canMove = true;
-
         yield return new WaitForSecondsRealtime(0.3f);
         animator.SetBool("isBoreEating", false);
         

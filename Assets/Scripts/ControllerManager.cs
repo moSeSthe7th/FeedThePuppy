@@ -69,5 +69,6 @@ public class ControllerManager : MonoBehaviour
     {
         bone.transform.localPosition = bonePos;
         bone.gameObject.SetActive(true);
+        Debug.Log("Can move: " + DataScript.canMove);
     }
 }

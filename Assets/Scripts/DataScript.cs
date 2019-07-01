@@ -39,4 +39,6 @@ public static class DataScript
     public static int[] obstaclePaths;
 
     public static bool isExitOccupied;
+
+    public static bool isMergeAvailable;
 }

@@ -924,6 +924,7 @@ GameObject:
   - component: {fileID: 453592058}
   - component: {fileID: 453592060}
   - component: {fileID: 453592061}
+  - component: {fileID: 453592062}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1078,6 +1079,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d44db976d347ca4bac5a8d961d7e507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &453592062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453592052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017052d13be01a54181eb1fb32d3e79a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  badDog: {fileID: 6692217583869325846, guid: 7947846e3da662b4da51eb60a89f5ea5, type: 3}
+  mergeParticleSystemObj: {fileID: 420064823569279401, guid: 3e369021ab564f0428bbd6dc347bd547,
+    type: 3}
 --- !u!1 &506946351
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,7 +1185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a22f3482f5d61246bd191ecb48be3a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 519420031}
+  camSizeMapper: {x: 0, y: 0, z: 0}
   pinkSkybox: {fileID: 2100000, guid: e3ea509d073a851449a97e25e1745b32, type: 2}
   blueSkybox: {fileID: 2100000, guid: 742f974cea96d404686ea076ab2a47f2, type: 2}
 --- !u!20 &519420031
