@@ -32,6 +32,7 @@ public class MergerScript : MonoBehaviour
         }
 
         isMergeAvailable = true;
+        DataScript.canMove = true;
         
         
     }

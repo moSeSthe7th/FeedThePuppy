@@ -30,7 +30,7 @@ public class BadDogsCollisionScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == gameObject.tag)
+        if (collision.gameObject.tag == "Bad Dogs")
         {
             Vector3 middleOfCollisionPos = new Vector3((gameObject.transform.position.x + collision.gameObject.transform.position.x) / 2,
                 (gameObject.transform.position.y + collision.gameObject.transform.position.y) / 2,

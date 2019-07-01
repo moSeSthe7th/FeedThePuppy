@@ -52,9 +52,6 @@ public class BadDogsMovement : MonoBehaviour
     // while walking so i decided to change it with a vector3 pos which is taken at the start of the function
     public IEnumerator moveToPositionSmoothly(GameObject from, Vector3 toGameobjectsPos)
     {
-        Debug.Log("Entered move to position smoothly");
-        Debug.Log("From: " + from.transform.position);
-        Debug.Log("To: " + toGameobjectsPos);
         DataScript.canMove = false;
         
 
@@ -62,11 +59,13 @@ public class BadDogsMovement : MonoBehaviour
         {
             from.transform.position = Vector3.MoveTowards(from.transform.position, toGameobjectsPos, 10f * Time.deltaTime);
             yield return new WaitForSecondsRealtime(0.04f);
+            Debug.Log("Inside the while loop");
         }
 
         DataScript.canMove = true;
 
         yield return new WaitForSecondsRealtime(0.3f);
         animator.SetBool("isBadDogEating", false);
+        Debug.Log("End of the Enumerator");
     }
 }
