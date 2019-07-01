@@ -8,14 +8,16 @@ public class LevelsColorSelector : MonoBehaviour
     private Color backgroundColor;
     private Color groundColor;
     private Color backgroundPanelColor;
-    
+
+    string levelColorCode;
+
     void Start()
-    {
-        string levelColorCode = DataScript.levelColorCode;
+    {   
+        levelColorCode = DataScript.levelColorCode;
         ColorCodeData(levelColorCode);
     }
 
-    
+
     public void ColorCodeData(string colorCode)             //if change the color code of some element, also change it at level manager
     {
         switch (colorCode)

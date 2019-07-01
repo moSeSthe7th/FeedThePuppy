@@ -4,27 +4,48 @@ using UnityEngine;
 
 
 public class CameraScript : MonoBehaviour
-{
-    public Camera camera;
+{   
+    Camera mCamera;
+    float camSize;
+    public Vector3 camSizeMapper;
 
     public Material pinkSkybox;
     public Material blueSkybox;
 
     private Material skyboxMaterial;
+
+    string skyBoxPathStr;
     
     void Start()
     {
-        camera = Camera.main;
-        //camera.backgroundColor = DataScript.backgroundColor;
-        skyboxMaterial = Resources.Load<Material>(DataScript.skyboxPath);
-        RenderSettings.skybox = skyboxMaterial;
+        mCamera = Camera.main;
+        camSize = mCamera.orthographicSize;
+
+        camSizeMapper = new Vector3(camSize,camSize,camSize);
     }
 
-    public void setCameraPosition(int column, int row)
+    //Moved skoybox settings to SetCamera because of script execution order. This works as a work around could be updated
+    private void LateUpdate()
     {
-        float x = column / 2;
-        float y = row / 2;
-        float z = -(x + y) / 2;
-        camera.transform.position = new Vector3(x, y, z);
+        if(DataScript.skyboxPath != null || Equals(skyBoxPathStr,DataScript.skyboxPath) == false)
+        {
+            skyBoxPathStr = DataScript.skyboxPath;
+            skyboxMaterial = Resources.Load<Material>(skyBoxPathStr);
+            RenderSettings.skybox = skyboxMaterial;
+        }
+    }
+
+    public void SetCamera(float column, float row , float newCamSize)
+    {
+        //Changed int with float value must be increase 0.5 by 0.5. 
+
+        float x = (column - 1f) / 2f;
+        float y = (row - 1f) / 2f;
+        float z = -(x + y) / 2f;
+
+        mCamera.transform.position = new Vector3(x, y, z);
+
+        mCamera.orthographicSize = newCamSize;
+
     }
 }
