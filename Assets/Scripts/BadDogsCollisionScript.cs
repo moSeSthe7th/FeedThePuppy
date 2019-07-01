@@ -17,7 +17,6 @@ public class BadDogsCollisionScript : MonoBehaviour
         if(collision.gameObject.tag == "Bone")
         {
             StartCoroutine(boneEated(collision.gameObject));
-            
         }
 
     }
