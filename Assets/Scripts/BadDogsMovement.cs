@@ -52,6 +52,9 @@ public class BadDogsMovement : MonoBehaviour
     // while walking so i decided to change it with a vector3 pos which is taken at the start of the function
     public IEnumerator moveToPositionSmoothly(GameObject from, Vector3 toGameobjectsPos)
     {
+        Debug.Log("Entered move to position smoothly");
+        Debug.Log("From: " + from.transform.position);
+        Debug.Log("To: " + toGameobjectsPos);
         DataScript.canMove = false;
         
 

@@ -37,10 +37,7 @@ namespace ContentSizeMapping
             Vector3 oldSize = currentSizeOfObject;
             Vector3 newSize = Vector2.one;
             float defaultColumnSize = 3f;
-
-            Debug.Log("GameScreenWidth is : " + gameScreenWidth);
-            Debug.Log("Size before changing : " + oldSize);
-
+            
             switch(objectType)
             {
 

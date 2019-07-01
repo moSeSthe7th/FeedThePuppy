@@ -12,7 +12,7 @@ public class ObstacleSpriteSelector : MonoBehaviour
 
         int i = Random.Range(0, DataScript.obstaclePaths.Length);
         int selectedSprite = DataScript.obstaclePaths[i];
-        Debug.Log("SelectedSprite " + selectedSprite);
+
         GetComponent<SpriteRenderer>().sprite = sprites[selectedSprite];
 
     }
