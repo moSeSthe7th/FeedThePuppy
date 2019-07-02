@@ -13,6 +13,7 @@ public class BadDogsMovement : MonoBehaviour
         
         animator = gameObject.GetComponent<Animator>();
         animator.SetBool("isBadDogEating", false);
+        StartCoroutine(StartAnimationOfBadDog());
     }
 
     // Update is called once per frame
@@ -68,5 +69,13 @@ public class BadDogsMovement : MonoBehaviour
         DataScript.canMove = true;
         yield return new WaitForSecondsRealtime(0.3f);
         animator.SetBool("isBadDogEating", false);
+    }
+
+    public IEnumerator StartAnimationOfBadDog()
+    {
+        float waitTime = Random.Range(0f, 3f);
+        yield return new WaitForSecondsRealtime(waitTime);
+
+        animator.SetBool("isBadDogStarted", true);
     }
 }

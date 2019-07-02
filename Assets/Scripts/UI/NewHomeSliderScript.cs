@@ -6,9 +6,12 @@ public class NewHomeSliderScript : MonoBehaviour
 {
     private Slider slider;
 
+    private Text newHomeSliderText;
+
     private void OnEnable()
     {
         slider = GetComponent<Slider>();
+        newHomeSliderText = GetComponentInChildren<Text>();
         slider.interactable = false;
         LevelPassed();
     }
@@ -26,6 +29,8 @@ public class NewHomeSliderScript : MonoBehaviour
         }
 
         slider.value = (float)DataScript.currentTotalStarCount / (float)DataScript.starsNeededToMoveNewHome;     //does not work when float cast removed
-        
+        newHomeSliderText.text = DataScript.currentTotalStarCount.ToString() + " / " + DataScript.starsNeededToMoveNewHome.ToString();
+
+
     }
 }

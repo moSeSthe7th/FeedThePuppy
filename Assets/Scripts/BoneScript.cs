@@ -11,8 +11,12 @@ public class BoneScript : MonoBehaviour
     private SpriteRenderer boneShadow;
     private SpriteRenderer[] spriteRenderers;
 
+    private StartingTextScript startingTextScript;
+
     private void Awake()
     {
+        startingTextScript = FindObjectOfType(typeof(StartingTextScript)) as StartingTextScript;
+
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         spriteRenderer = spriteRenderers[0];
         if (spriteRenderers[1] != null)
@@ -62,6 +66,11 @@ public class BoneScript : MonoBehaviour
 
     IEnumerator BoneThrowAnimation()
     {
+        if(startingTextScript != null)
+        {
+            startingTextScript.CloseStartingText();
+        }
+       
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         Quaternion initialRotation = transform.rotation;
         Vector3 initialScale = transform.localScale;

@@ -9,9 +9,15 @@ public class BoreCollisionScript : MonoBehaviour
     private ParticleSystem boneParticleSystem;
     private GameHandler gameHandler;
 
+    private Animator animator;
+
     private void Start()
     {
         gameHandler = FindObjectOfType(typeof(GameHandler)) as GameHandler;
+
+        animator = gameObject.GetComponent<Animator>();
+        animator.SetBool("isBoreFeared", false);
+        StartCoroutine(StartAnimationOfBore());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,6 +42,7 @@ public class BoreCollisionScript : MonoBehaviour
         {
             gameHandler.GameOver();
             Debug.Log("GAME OVER");
+            StartCoroutine(gameOverAnim());
         }
     }
 
@@ -61,5 +68,35 @@ public class BoreCollisionScript : MonoBehaviour
         
     }
 
-   
+    public IEnumerator gameOverAnim()
+    {
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        animator.SetBool("isBoreFeared", true);
+        transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+
+        while (transform.position.x < 50f)
+        {
+            Vector3 vector3 = transform.position;
+            vector3.x += 0.2f;
+            transform.position = vector3;
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        /*transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+
+        while (transform.localScale.x > 0f)
+        {
+            transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+            transform.RotateAroundLocal(new Vector3(0f, 0f, 1f), 1f);
+            yield return new WaitForSeconds(0.07f);
+        }*/
+    }
+
+    public IEnumerator StartAnimationOfBore()
+    {
+        float waitTime = Random.Range(0f, 3f);
+        yield return new WaitForSecondsRealtime(waitTime);
+
+        animator.SetBool("isBoreStarted", true);
+    }
 }

@@ -38,7 +38,7 @@ public class UIScript : MonoBehaviour
     
     public void GameOverUI()
     {
-        Time.timeScale = 0;
+        
         gameOverPanel.SetActive(true);
         DataScript.isGamePaused = true;
         pauseButton.gameObject.SetActive(false);

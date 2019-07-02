@@ -17,3 +17,7 @@ public class NewHomeSliderText : MonoBehaviour
         countText.text = DataScript.currentTotalStarCount.ToString() + " / " + DataScript.starsNeededToMoveNewHome.ToString();
     }
 }
+
+
+
+// BU SCRIPT KULLANILMIYOR CIKARTILABİLİR....
