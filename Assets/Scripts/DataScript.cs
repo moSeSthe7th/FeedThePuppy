@@ -41,4 +41,8 @@ public static class DataScript
     public static bool isExitOccupied;
 
     public static bool isMergeAvailable;
+
+    public static int puppyCount;
+
+    public static int mergedPuppyCount;
 }

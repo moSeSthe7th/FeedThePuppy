@@ -40,7 +40,7 @@ public class BadDogsCollisionScript : MonoBehaviour
                 (gameObject.transform.position.z + collision.gameObject.transform.position.z) / 2);
             Vector3 roundedCollisionPos = new Vector3(Mathf.Round(middleOfCollisionPos.x), Mathf.Round(middleOfCollisionPos.y), Mathf.Round(middleOfCollisionPos.z));
             
-            StartCoroutine(mergerScript.MergeObjects(gameObject, roundedCollisionPos));
+            StartCoroutine(mergerScript.MergeObjects("Bad Dog", roundedCollisionPos));
             DataScript.isMergeAvailable = false;
             Destroy(this.gameObject);
         }

@@ -1043,6 +1043,7 @@ MonoBehaviour:
   exitButton: {fileID: 994339847}
   backgroundPanelImage: {fileID: 433572720}
   boneCounter: {fileID: 1746901472}
+  startingText: {fileID: 1880329880}
 --- !u!114 &453592059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1092,6 +1093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   badDog: {fileID: 6692217583869325846, guid: 7947846e3da662b4da51eb60a89f5ea5, type: 3}
+  bore: {fileID: 5240857684904854442, guid: 0f444ee66025d7b4d9f9fe41042e231b, type: 3}
   mergeParticleSystemObj: {fileID: 420064823569279401, guid: 3e369021ab564f0428bbd6dc347bd547,
     type: 3}
 --- !u!1 &506946351

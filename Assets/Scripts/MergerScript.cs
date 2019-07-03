@@ -6,6 +6,7 @@ public class MergerScript : MonoBehaviour
 {
     
     public GameObject badDog;
+    public GameObject bore;
 
     private GameObject board;
 
@@ -15,11 +16,11 @@ public class MergerScript : MonoBehaviour
     private void Start()
     {
         DataScript.isMergeAvailable = true;
+        DataScript.mergedPuppyCount = 0;
     }
 
     
-
-    public IEnumerator MergeObjects(GameObject gameObject, Vector3 mergePosition)
+    public IEnumerator MergeObjects(string gameObjectToMerge, Vector3 mergePosition)
     {
         DataScript.canMove = true;
 
@@ -31,8 +32,16 @@ public class MergerScript : MonoBehaviour
             mergeParticleSystem = mergerParticleObj.GetComponent<ParticleSystem>();
             mergeParticleSystem.Play();
 
+            if(gameObjectToMerge == "Bad Dog")
+            {
+                GameObject go = Instantiate(badDog, mergePosition, Quaternion.identity, board.transform);
+            }
+            else if(gameObjectToMerge == "Bore")
+            {
+                GameObject go = Instantiate(bore, mergePosition, Quaternion.identity, board.transform);
+                DataScript.mergedPuppyCount += 1;
+            }
             
-            GameObject go = Instantiate(badDog, mergePosition, Quaternion.identity, board.transform);
         }
         yield return new WaitForSecondsRealtime(0.2f);
     }

@@ -19,6 +19,7 @@ public class UIScript : MonoBehaviour
     public Image backgroundPanelImage;
 
     public Text boneCounter;
+    public Text startingText;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +66,7 @@ public class UIScript : MonoBehaviour
         pauseButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(true);
         backgroundPanelImage.gameObject.SetActive(true);
+        startingText.gameObject.SetActive(false);
 
         DataScript.isGamePaused = true;
     }

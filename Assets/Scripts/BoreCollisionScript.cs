@@ -11,9 +11,12 @@ public class BoreCollisionScript : MonoBehaviour
 
     private Animator animator;
 
+    private MergerScript mergerScript;
+
     private void Start()
     {
         gameHandler = FindObjectOfType(typeof(GameHandler)) as GameHandler;
+        mergerScript = FindObjectOfType(typeof(MergerScript)) as MergerScript;
 
         animator = gameObject.GetComponent<Animator>();
         animator.SetBool("isBoreFeared", false);
@@ -43,6 +46,17 @@ public class BoreCollisionScript : MonoBehaviour
             gameHandler.GameOver();
             Debug.Log("GAME OVER");
             StartCoroutine(gameOverAnim());
+        }
+        if(collision.gameObject.tag == this.gameObject.tag)
+        {
+            Vector3 middleOfCollisionPos = new Vector3((gameObject.transform.position.x + collision.gameObject.transform.position.x) / 2,
+              (gameObject.transform.position.y + collision.gameObject.transform.position.y) / 2,
+              (gameObject.transform.position.z + collision.gameObject.transform.position.z) / 2);
+            Vector3 roundedCollisionPos = new Vector3(Mathf.Round(middleOfCollisionPos.x), Mathf.Round(middleOfCollisionPos.y), Mathf.Round(middleOfCollisionPos.z));
+
+            StartCoroutine(mergerScript.MergeObjects("Bore", roundedCollisionPos));
+            DataScript.isMergeAvailable = false;
+            Destroy(this.gameObject);
         }
     }
 

@@ -112,7 +112,7 @@ public class BoardManager : MonoBehaviour
         DataScript.expectedBoneCount = levelManager.boneCount;
         DataScript.boneCount = 0;
         DataScript.levelColorCode = levelColorCode;
-        
+        DataScript.puppyCount = playerPos.Count;
 
         pooledBoneList = ObjectPooler.instance.PooltheObjects(bone,rows * columns, Board);
         putObjectsOnMap(dog, dogPos);
