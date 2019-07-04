@@ -61,7 +61,7 @@ public class GameHandler : MonoBehaviour
             PlayerPrefs.SetInt("Max Level", DataScript.maxLevel);
             PlayerPrefs.SetInt("Current Level", DataScript.currentLevel + 1);
         }
-
+        DataScript.isExitOccupied = false;
         uIScript.LevelPassedUI();
     }
 
