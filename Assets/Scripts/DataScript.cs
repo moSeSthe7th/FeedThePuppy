@@ -4,6 +4,8 @@ using UnityEngine;
 
 public static class DataScript
 {
+    public static float gameSpeed;
+
     public static int currentLevel;
 
     public static int maxLevel;

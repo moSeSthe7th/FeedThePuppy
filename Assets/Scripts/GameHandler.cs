@@ -13,14 +13,17 @@ public class GameHandler : MonoBehaviour
         boardManager = FindObjectOfType(typeof(BoardManager)) as BoardManager;
         uIScript = FindObjectOfType(typeof(UIScript)) as UIScript;
 
-        
+        DataScript.gameSpeed = 1.5f;
         DataScript.currentLevel = PlayerPrefs.GetInt("Current Level", 1);
         DataScript.maxLevel = PlayerPrefs.GetInt("Max Level", 1);
         DataScript.isGamePaused = false;
-        DataScript.totalLevelCount = 9;
+        DataScript.totalLevelCount = 10;
         DataScript.starsForAllLevels = new int[DataScript.totalLevelCount];
         DataScript.starsNeededToMoveNewHome = 40;           // bu hardcoded bunu bi şekilde değiştirebilirsin
         DataScript.currentTotalStarCount = 0;
+        DataScript.isExitOccupied = false;
+
+        Time.timeScale = DataScript.gameSpeed;
 
         if (DataScript.starsForAllLevels != null)
         {

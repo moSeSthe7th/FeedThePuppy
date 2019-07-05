@@ -27,8 +27,7 @@ public class BoreCollisionScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Exit" && !DataScript.isExitOccupied)
         {
-            Debug.Log("EXIT");
-            StartCoroutine(reachedToExit());
+            StartCoroutine(ReachedToExit());
             gameHandler.LevelPassed();
         }
         
@@ -72,7 +71,7 @@ public class BoreCollisionScript : MonoBehaviour
         bone.gameObject.SetActive(false);
     }
 
-    public IEnumerator reachedToExit()
+    public IEnumerator ReachedToExit()
     {
         while(transform.localScale.x > 0f)
         {

@@ -73,7 +73,7 @@ public class UIScript : MonoBehaviour
 
     public void ExitButtonUI()
     {
-        Time.timeScale = 1;
+        Time.timeScale = DataScript.gameSpeed;
 
         pausePanel.SetActive(false);
         pauseButton.gameObject.SetActive(true);

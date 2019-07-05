@@ -6,12 +6,14 @@ public class BadDogsCollisionScript : MonoBehaviour
 {
     public GameObject boneParticleGameObj;
     private ParticleSystem boneParticleSystem;
+    private GameHandler gameHandler;
 
     private MergerScript mergerScript;
 
     private void Start()
     {
         mergerScript = FindObjectOfType(typeof(MergerScript)) as MergerScript;
+        gameHandler = FindObjectOfType(typeof(GameHandler)) as GameHandler;
     }
 
 
@@ -20,18 +22,18 @@ public class BadDogsCollisionScript : MonoBehaviour
         if (collision.gameObject.tag == "Exit")
         {
             DataScript.isExitOccupied = true;
+            gameHandler.GameOver();
+            StartCoroutine(ReachedToExit());
         }
         if(collision.gameObject.tag == "Bone")
         {
             StartCoroutine(boneEated(collision.gameObject));
-            Debug.Log("is Merge Available" + DataScript.isMergeAvailable);
         }
         
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collided with: " + collision.gameObject.tag);
         if (collision.gameObject.tag == gameObject.tag)
         {
             
@@ -58,5 +60,15 @@ public class BadDogsCollisionScript : MonoBehaviour
         boneParticleSystem.Play();
         bone.gameObject.SetActive(false);
         DataScript.isMergeAvailable = true;
+    }
+
+    public IEnumerator ReachedToExit()
+    {
+        while (transform.localScale.x > 0f)
+        {
+            transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+            yield return new WaitForSeconds(0.07f);
+        }
+
     }
 }

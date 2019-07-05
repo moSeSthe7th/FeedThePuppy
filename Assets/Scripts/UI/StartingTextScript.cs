@@ -10,7 +10,7 @@ public class StartingTextScript : MonoBehaviour
     void Start()
     {
         startingText = GetComponent<Text>();
-        startingText.color = DataScript.boneColor;
+        //startingText.color = DataScript.boneColor;
     }
     
     public void CloseStartingText()

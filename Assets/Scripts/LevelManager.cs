@@ -163,6 +163,19 @@ public class LevelManager : MonoBehaviour
                 levelColorCode = "Red";
                 
                 break;
+            case 10:
+                columns = 4;
+                rows = 1;
+                boneCount = 3;
+
+                playerPos.Add(new Vector3(0f, 0f, 0f));
+                playerPos.Add(new Vector3(2f, 0f, 0f));
+
+                exitPos = new Vector3(3f, 0f, 0f);
+
+                levelColorCode = "Red";
+
+                break;
         }
         
 
