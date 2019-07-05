@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Facebook.Unity;
 
 public class UIScript : MonoBehaviour
 {
@@ -56,7 +55,7 @@ public class UIScript : MonoBehaviour
         backgroundPanelImage.gameObject.SetActive(true);
         bonesParentScript.levelPassed();
         boneCounter.gameObject.SetActive(false);
-        FB.LogAppEvent(Facebook.Unity.AppEventName.AchievedLevel, DataScript.currentLevel, null);
+
     }
 
     public void PausedUI()
