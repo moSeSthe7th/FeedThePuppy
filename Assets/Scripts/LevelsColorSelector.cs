@@ -34,7 +34,7 @@ public class LevelsColorSelector : MonoBehaviour
                 break;
             case "Blue":
                 //DataScript.backgroundColor = new Color(0.8392157f, 0.5333334f, 0.5333334f);
-                DataScript.skyboxPath = "ResourceMaterials/BlueSkybox";
+                DataScript.skyboxPath = "ResourceMaterials/CloudSkyBox";
                 DataScript.boneColor = new Color(0f, 0.6340652f, 0.6698113f);
                 DataScript.groundColor = new Color(1f, 0.8626885f, 0.4575472f);
                 DataScript.backgroundPanelImageColor = new Color(0.3990299f, 0.463845f, 0.5754717f, 0.7568628f);
