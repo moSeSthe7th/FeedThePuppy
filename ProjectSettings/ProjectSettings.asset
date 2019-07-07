@@ -161,6 +161,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.UtmostGames.FeedThePuppy
     Standalone: com.Company.ProductName
+    iPhone: com.UtmostGames.FeedThePuppy
   buildNumber: {}
   AndroidBundleVersionCode: 16
   AndroidMinSdkVersion: 16

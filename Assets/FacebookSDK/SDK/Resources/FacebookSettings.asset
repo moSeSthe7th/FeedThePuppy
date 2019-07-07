@@ -16,9 +16,9 @@ MonoBehaviour:
   clientTokens:
   - 
   appIds:
-  - 0
+  - 2556636064349041
   appLabels:
-  - App Name
+  - Feed The Puppy
   cookie: 1
   logging: 1
   status: 1
