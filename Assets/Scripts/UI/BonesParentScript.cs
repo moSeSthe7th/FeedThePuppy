@@ -25,21 +25,21 @@ public class BonesParentScript : MonoBehaviour
             images[i].gameObject.SetActive(false);
         }
 
-        if (DataScript.boneCount <= DataScript.expectedBoneCount)
+        if (DataScript.score <= DataScript.expectedBoneCount)
         {
             StartCoroutine(levelEndedBones(3));
             congratulationsTextScript.Congratulate(3);
 
-            DataScript.starsForAllLevels[DataScript.currentLevel - 1] = 3;
+            DataScript.starsForAllLevels[DataScript.levelNumber - 1] = 3;
         }
-        else if(DataScript.boneCount <= DataScript.expectedBoneCount * 1.5f)
+        else if(DataScript.score <= DataScript.expectedBoneCount * 1.5f)
         {
             StartCoroutine(levelEndedBones(2));
             congratulationsTextScript.Congratulate(2);
 
-            if (DataScript.starsForAllLevels[DataScript.currentLevel - 1] <= 2)
+            if (DataScript.starsForAllLevels[DataScript.levelNumber - 1] <= 2)
             {
-                DataScript.starsForAllLevels[DataScript.currentLevel - 1] = 2;
+                DataScript.starsForAllLevels[DataScript.levelNumber - 1] = 2;
             }
         }
         else
@@ -47,9 +47,9 @@ public class BonesParentScript : MonoBehaviour
             StartCoroutine(levelEndedBones(1));
             congratulationsTextScript.Congratulate(1);
 
-            if (DataScript.starsForAllLevels[DataScript.currentLevel - 1] <= 1)
+            if (DataScript.starsForAllLevels[DataScript.levelNumber - 1] <= 1)
             {
-                DataScript.starsForAllLevels[DataScript.currentLevel - 1] = 1;
+                DataScript.starsForAllLevels[DataScript.levelNumber - 1] = 1;
             }
         }
 

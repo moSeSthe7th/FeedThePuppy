@@ -20,8 +20,8 @@ public class LevelSelectorButtons : MonoBehaviour
     
     public void LevelSelectorButtonPressed()
     {
-        DataScript.currentLevel = levelNumber;
-        PlayerPrefs.SetInt("Current Level", DataScript.currentLevel);
+        DataScript.levelNumber = levelNumber;
+        PlayerPrefs.SetInt("Current Level", DataScript.levelNumber);
 
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);

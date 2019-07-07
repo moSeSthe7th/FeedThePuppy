@@ -6,11 +6,11 @@ public static class DataScript
 {
     public static float gameSpeed;
 
-    public static int currentLevel;
+    public static int levelNumber;
 
     public static int maxLevel;
 
-    public static int boneCount;
+    public static int score;                      // voodoo wants that, it was normally thrown bone count;
 
     public static int expectedBoneCount;
 

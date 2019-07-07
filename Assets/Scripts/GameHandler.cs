@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Facebook.Unity;
+using GameAnalyticsSDK;
 
 public class GameHandler : MonoBehaviour
 {
@@ -10,11 +11,13 @@ public class GameHandler : MonoBehaviour
 
     private void Awake()
     {
+        GameAnalytics.Initialize();
+
         boardManager = FindObjectOfType(typeof(BoardManager)) as BoardManager;
         uIScript = FindObjectOfType(typeof(UIScript)) as UIScript;
 
         DataScript.gameSpeed = 1.5f;
-        DataScript.currentLevel = PlayerPrefs.GetInt("Current Level", 1);
+        DataScript.levelNumber = PlayerPrefs.GetInt("Current Level", 1);
         DataScript.maxLevel = PlayerPrefs.GetInt("Max Level", 1);
         DataScript.isGamePaused = false;
         DataScript.totalLevelCount = 10;
@@ -22,6 +25,9 @@ public class GameHandler : MonoBehaviour
         DataScript.starsNeededToMoveNewHome = 40;           // bu hardcoded bunu bi şekilde değiştirebilirsin
         DataScript.currentTotalStarCount = 0;
         DataScript.isExitOccupied = false;
+
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, Application.version, DataScript.levelNumber.ToString());
+
 
         Time.timeScale = DataScript.gameSpeed;
 
@@ -36,7 +42,7 @@ public class GameHandler : MonoBehaviour
 
         Time.timeScale = 1;
 
-        boardManager.currentLevel = DataScript.currentLevel;
+        boardManager.currentLevel = DataScript.levelNumber;
 
         if (!FB.IsInitialized)
         {
@@ -53,15 +59,17 @@ public class GameHandler : MonoBehaviour
 
     public void LevelPassed()
     {
-       FB.LogAppEvent(AppEventName.AchievedLevel, DataScript.currentLevel);
-       if (DataScript.currentLevel < DataScript.totalLevelCount)
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, Application.version, DataScript.levelNumber.ToString(), DataScript.score);
+
+        FB.LogAppEvent(AppEventName.AchievedLevel, DataScript.levelNumber);
+       if (DataScript.levelNumber < DataScript.totalLevelCount)
         {
-            if (DataScript.currentLevel == DataScript.maxLevel)
+            if (DataScript.levelNumber == DataScript.maxLevel)
             {
                 DataScript.maxLevel = DataScript.maxLevel + 1;
             }
             PlayerPrefs.SetInt("Max Level", DataScript.maxLevel);
-            PlayerPrefs.SetInt("Current Level", DataScript.currentLevel + 1);
+            PlayerPrefs.SetInt("Current Level", DataScript.levelNumber + 1);
         }
         
         uIScript.LevelPassedUI();

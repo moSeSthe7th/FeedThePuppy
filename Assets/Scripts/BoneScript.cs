@@ -43,7 +43,7 @@ public class BoneScript : MonoBehaviour
            
             if (raycastHit.collider.gameObject.tag != "Ground")
             {
-                DataScript.boneCount--;
+                DataScript.score--;
                 gameObject.SetActive(false);
                 Debug.Log(raycastHit.collider.gameObject.tag);      // burada oyun içi bi uyarı verilebilir belki
             }

@@ -110,7 +110,7 @@ public class BoardManager : MonoBehaviour
         levelColorCode = levelManager.levelColorCode;
 
         DataScript.expectedBoneCount = levelManager.boneCount;
-        DataScript.boneCount = 0;
+        DataScript.score = 0;
         DataScript.levelColorCode = levelColorCode;
         DataScript.puppyCount = playerPos.Count;
 

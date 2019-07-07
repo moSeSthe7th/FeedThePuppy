@@ -8,9 +8,9 @@ public class NextLevelButton : MonoBehaviour
     
     public void NextLevelButtonPressed()
     {
-        if (DataScript.currentLevel < DataScript.totalLevelCount)
+        if (DataScript.levelNumber < DataScript.totalLevelCount)
         {
-            DataScript.currentLevel = DataScript.currentLevel + 1;
+            DataScript.levelNumber = DataScript.levelNumber + 1;
             
         }
 

@@ -34,7 +34,7 @@ public class ControllerManager : MonoBehaviour
                 if (bone != null && boardManager.gridPositions.Contains(roundedTouchPos))
                 {
                     putBone(bone, roundedTouchPos);
-                    DataScript.boneCount++;
+                    DataScript.score++;
                 }
                 else
                 {
@@ -55,7 +55,7 @@ public class ControllerManager : MonoBehaviour
             if (bone != null && boardManager.gridPositions.Contains(roundedMousePos))
             {
                 putBone(bone, roundedMousePos);
-                DataScript.boneCount++;
+                DataScript.score++;
             }
             else
             {

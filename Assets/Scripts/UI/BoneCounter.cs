@@ -18,6 +18,6 @@ public class BoneCounter : MonoBehaviour
     
     private void Update()
     {
-        boneCounterText.text = DataScript.boneCount.ToString() + " / " + DataScript.expectedBoneCount.ToString();
+        boneCounterText.text = DataScript.score.ToString() + " / " + DataScript.expectedBoneCount.ToString();
     }
 }
